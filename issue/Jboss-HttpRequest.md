@@ -1,10 +1,10 @@
-  1.问题背景:
-      异步传参：HttpRequest
+  ## 1.问题背景:
+      异步传参：HttpRequest 后获取请求头信息
       
-  2.问题现象
+  ## 2.问题现象
       日志告警提示如下:RESTEASY003880: Unable to find contextual data of type: org.jboss.resteasy.spi.HttpRequest
       
-      ```
+      ```java
       /**
        * 告警日志
        **/
@@ -18,4 +18,5 @@
       2021-07-02 00:07:05 at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
       2021-07-02 00:07:05 at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:175)
       ```
-      
+## 3.解决方案：
+      在主线程中取出HttpRequest中请求头信息，封装成异步线程所需参数传递。
